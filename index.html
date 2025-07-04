@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Emaar Trending</title>
+
+  <style>
+    body, label, select, h1, h3, h4, li, p {
+      font-family: Arial, sans-serif;
+      color: black;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    #details ul {
+      list-style-type: disc;
+      padding-left: 20px;
+    }
+
+    .button-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .bed-btn {
+      padding: 10px 15px;
+      border: none;
+      background-color: #eaeaea;
+      font-weight: bold;
+      color: black;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .bed-btn:hover {
+      background-color: #d4d4d4;
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const projectSelect = document.getElementById('project');
+      const detailsDiv = document.getElementById('details');
+
+      const projectDetails = {
+        'Mivida': `<ul>
+          <li>Boulvard Insta. Till 27 - Parcel 25</li>
+          <li>Avenues Residence Insta. Till 27 - Parcel 10</li>
+          <li>Blue views Insta. Till 28</li>
+          <li>Crescent Insta. Till 26 - Parcel 27</li>
+        </ul>`,
+        'MSA': `<ul>
+          <li>Marina views - Waters Till 27</li>
+          <li>Marina views - Marine Till 29</li>
+          <li>Marina views - Cyan Till 29</li>
+          <li>Riva Views Till 29</li>
+          <li>Blanca 3Bds 191 M2 /EG25-28</li>
+          <li>2 Bds 141 M2 /EG21 Max Was (16M -2023 Summer) With Garden</li>
+          <li>Riva Salerno 14M</li>
+          <li>Siena Sea Side 60M</li>
+          <li>DV Skaia 10M</li>
+          <li>Greek</li>
+        </ul>`,
+        'BV': `<p>Beach Res. Inst. Till 28</p>`,
+        'Soul': `<ul>
+          <li>Infinity Inst. Till Nov 29</li>
+          <li>Island 36M Till 28 6yrs Till 30 8yrs</li>
+        </ul>`,
+        'RasHikma': `
+          <h3>Ras Hikma Apartments / Golf Villa Phase</h3>
+          <ul>
+            <li>7Y installments end (2032)</li>
+            <li>(1/2/3/4) Apartments</li>
+            <li>G+3 / G+4 / G+5</li>
+            <li>Villas 5-7 BDR</li>
+            <li>Partial / Full Sea View 🌊</li>
+            <li>International Airport ✈️</li>
+            <li>International Marina ⚓️</li>
+            <li>International Golf ⛳️</li>
+            <li>International Expiation Center</li>
+            <li>Festivals 🎶</li>
+            <li>Hotels / Hospitals / Universities</li>
+            <li>Commercial 1st Floor / Pools</li>
+          </ul>
+          <h4>Project Details</h4>
+          <div class="button-group">
+            <button class="bed-btn">1 Bed (95–120 m²)</button>
+            <button class="bed-btn">2 Bed (160–200 m²)</button>
+            <button class="bed-btn">3 Bed (170–230 m²)</button>
+            <button class="bed-btn">4 Bed (300 m²)</button>
+          </div>
+        `
+      };
+
+      projectSelect.addEventListener('change', function () {
+        const selectedProject = projectSelect.value;
+        detailsDiv.innerHTML = selectedProject ? projectDetails[selectedProject] : '';
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Emaar Trending</h1>
+    <form id="projectForm">
+      <label for="project">Choose Project:</label>
+      <select id="project" required>
+        <option value="" disabled selected>--Choose a project--</option>
+        <option value="Mivida">Mivida</option>
+        <option value="MSA">MSA</option>
+        <option value="BV">BV</option>
+        <option value="Soul">Soul</option>
+        <option value="RasHikma">Ras Hikma Apartments / Golf Villa</option>
+      </select>
+
+      <label for="details">Details:</label>
+      <div id="details" aria-live="polite"></div>
+    </form>
+  </div>
+</body>
+</html>
